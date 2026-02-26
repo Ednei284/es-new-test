@@ -1,0 +1,209 @@
+@media (min-width: 300px) {
+  @keyframes animarGradiente {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .header {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    background-color: var(--base-color-second-light);
+    border-top: 1px solid #e4e4e4;
+    transition:
+      background 0.4s,
+      box-shadow 0.4s;
+  }
+
+  .nav {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Esconde elementos de desktop no mobile */
+  .logoWrapper,
+  .headerText,
+  .desktopCart {
+    display: none;
+  }
+
+  .menu {
+    width: 100%;
+  }
+
+  .menuList {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .menuLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    color: var(--base-color);
+    font-size: 1.5rem;
+    /* Icon size */
+    position: relative;
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+
+  .menuLinkText {
+    font-size: 0.6rem;
+    font-family: var(--body-font);
+    color: var(--title-color);
+  }
+
+  .menuLink.active {
+    color: var(--base-color-second);
+  }
+
+  .menuLink.active .menuLinkText {
+    color: var(--base-color-second);
+  }
+
+  .cartShop {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cartShopQuant {
+    position: absolute;
+    top: -0.2rem;
+    right: -0.1rem;
+    background-color: red;
+    color: var(--text-color-white);
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+  }
+
+  .cartShopIcon {
+    font-size: 1.5rem;
+    color: inherit;
+    /* Herda a cor do .menuLink */
+  }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .header {
+    bottom: auto;
+    top: 0;
+    border-top: none;
+    border-bottom: 1px solid #e4e4e4;
+  }
+
+  .scroll {
+    background: var(--base-color-second-light);
+    box-shadow: 0px 0px 12px rgba(94, 88, 88, 0.08);
+  }
+
+  .nav {
+    justify-content: space-between;
+  }
+
+  .logoWrapper,
+  .headerText,
+  .desktopCart {
+    display: block;
+  }
+
+  .headerText {
+    text-align: center;
+  }
+
+  .paragr {
+    color: var(--title-color);
+    font-size: 0.8rem;
+  }
+
+  .menu {
+    width: auto;
+  }
+
+  .menuList {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 5px;
+  }
+
+  .cartShopItem {
+    display: none;
+  }
+
+  .menuLink {
+    flex-direction: row;
+    font-size: 1rem;
+    padding: 1rem;
+    font: 400 1rem var(--body-font);
+  }
+
+  .menuLink svg {
+    display: none;
+  }
+
+  .menuLinkText {
+    font-size: 1rem;
+    color: var(--title-color);
+  }
+
+  .menuLink:hover,
+  .menuLink.active {
+    color: var(--base-color);
+  }
+
+  .menuLink:hover .menuLinkText,
+  .menuLink.active .menuLinkText {
+    color: var(--base-color);
+  }
+
+  .menuLink::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: var(--base-color);
+    position: absolute;
+    left: 0;
+    bottom: 2.5rem;
+    transition: width 0.2s;
+  }
+
+  .menuLink:hover::after,
+  .menuLink.active::after {
+    width: 100%;
+  }
+
+  .desktopCart .cartShopIcon {
+    font-size: 1.5rem;
+    color: var(--base-color);
+  }
+}

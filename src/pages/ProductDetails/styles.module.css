@@ -1,0 +1,111 @@
+.productHeader a {
+    margin-bottom: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.productHeader {
+    display: flex;
+    flex-direction: column;
+}
+
+.navProd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .2rem;
+    text-align: center;
+
+}
+
+
+
+.navProd h2 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+
+.productButton {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+
+    gap: 0.5rem;
+    background-color: #25D366;
+    color: white;
+    padding: .3rem;
+
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.productButton:hover {
+    background-color: #128C7E;
+}
+
+.productButtonBack {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--base-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.productButtonBack:hover {
+    background-color: var(--base-color-second);
+}
+
+.productIcon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 4rem;
+}
+
+/* Estilos para os cards de produtos */
+.productCard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.imgProfile {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+}
+
+.cardContent {
+    width: 100%;
+}
+
+/* Desktop - 3 colunas quando maior que 1200px */
+@media (min-width: 1200px) {
+
+    .productHeader {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .productMain {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+
+    .productCard {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

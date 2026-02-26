@@ -1,0 +1,31 @@
+{
+    "promotions": [
+        {
+            "id": 1,
+            "title": "Dia das mães",
+            "url": "https://web.whatsapp.com/send?phone=5511942324913",
+            "image": {
+                "path": "/images/promotions/kit-dia-das-maes.jpeg",
+                "alt": "Alt promotion"
+            }
+        },
+        {
+            "id": 2,
+            "title": "Dia das mães",
+            "url": "https://web.whatsapp.com/send?phone=5511942324913",
+            "image": {
+                "path": "/images/promotions/kit-dia-das-maes.jpeg",
+                "alt": "Alt promotion"
+            }
+        },
+        {
+            "id": 3,
+            "title": "Dia das mães",
+            "url": "https://web.whatsapp.com/send?phone=5511942324913",
+            "image": {
+                "path": "/images/promotions/kit-dia-das-maes.jpeg",
+                "alt": "Alt promotion"
+            }
+        }
+    ]
+}

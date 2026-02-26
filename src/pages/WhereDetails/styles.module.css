@@ -1,0 +1,110 @@
+/* pages/Contact/styles.module.css */
+.sectionWhereDetails {
+    padding: 1rem;
+}
+
+.container {
+    gap: 4rem;
+}
+
+.title {
+    font: 700 1.875rem var(--body-font);
+    color: var(--title-color-);
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: var(--subtitle-font-size);
+    color: var(--base-color);
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.contactList {
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contactIcon {
+    font-size: 1.5rem;
+    color: var(--base-color);
+}
+
+.form {
+    width: 100%;
+}
+
+.inputGroup {
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.inputBox {
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    outline: none;
+    font: 400 1rem var(--body-font);
+    transition: border 0.3s;
+}
+
+.input:focus {
+    border-color: var(--base-color);
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: var(--text-color);
+    transition: all 0.3s;
+    pointer-events: none;
+}
+
+.input:focus+.label,
+.input:not(:placeholder-shown)+.label {
+    top: -0.6rem;
+    left: 0.8rem;
+    font-size: 0.75rem;
+    background: var(--body-color);
+    padding: 0 0.2rem;
+    color: var(--base-color);
+}
+
+
+.button {
+    margin-top: 1rem;
+}
+
+@media (min-width: 1200px) {
+
+    .container {
+        grid-auto-flow: column;
+        align-items: center;
+        gap: 8rem;
+    }
+
+    .text {
+        max-width: 25rem;
+    }
+}

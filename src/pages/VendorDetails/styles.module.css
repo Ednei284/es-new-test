@@ -1,0 +1,140 @@
+.productHeader {
+  margin-bottom: 2rem;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.navProd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.2rem;
+  text-align: center;
+}
+
+@keyframes animarGradiente {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.wrapper > a {
+  padding: 5px;
+  /* Espaço para a borda */
+  border-radius: 50%;
+  background: linear-gradient(90deg, #00ff80, #4400ff, #ff00aa);
+  background-size: 600% 600%;
+  text-align: center;
+  color: white;
+  animation: 6s ease infinite;
+}
+
+.wrapper > h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem;
+  border-radius: 0.8rem;
+  background: white;
+  font-size: 1.2rem;
+  /* Conteúdo interno */
+}
+
+.navProd h2 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.productButton {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+
+  gap: 0.5rem;
+  background-color: #25d366;
+  color: white;
+  padding: 0.3rem;
+
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.productButton:hover {
+  background-color: #128c7e;
+}
+
+.productButtonBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--base-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.productButtonBack:hover {
+  background-color: var(--base-color-second);
+}
+
+.productIcon {
+  width: 2rem;
+  height: 2rem;
+  font-size: 4rem;
+}
+
+/* Estilos para os cards de produtos */
+.productCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.imgProfile {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+}
+
+.cardContent {
+  width: 100%;
+}
+
+.socialMedia {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(45deg, #0004ff, #cc00ff);
+  border-radius: 50%;
+}
+
+/* Desktop - 3 colunas quando maior que 1200px */
+@media (min-width: 1200px) {
+  .productHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .productCard {
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

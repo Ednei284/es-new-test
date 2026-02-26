@@ -1,0 +1,44 @@
+{
+    "news": [
+        {
+            "id": 1,
+            "url": "https://www.mogidascruzes.sp.gov.br/noticia/prefeitura-de-mogi-das-cruzes-promove-2-feira-de-troca-e-formacao-em-economia-solidaria-em-jundiapeba",
+            "role": "Secretaria de Assistência Social",
+            "call": "Evento teve como objetivo proporcionar vivência sobre os princípios da economia solidária",
+            "title": "Prefeitura de Mogi das Cruzes promove 2ª Feira de Troca e Formação em Economia Solidária em Jundiapeba",
+            "text": "A Prefeitura de Mogi das Cruzes por meio da Secretaria de Assistência Social e do Programa Conduz, realizou a 2ª Feira de Troca e Formação em Economia Solidária, no espaço da Incubadora Social de Jundiapeba. O evento teve como objetivo proporcionar vivência sobre os princípios da economia solidária. Participaram da Feira de Trocas, os  empreendimentos econômicos solidários acompanhados pelo Programa  Conduz, membros da comunidade  local, público  atendido pelos Serviços de Convivência  e Fortalecimento de Vínculos de Crianças e Adolescentes e de Pessoas Idosas executados por meio de parceria entre Prefeitura  e OSC Lar Batista e SEFRAS,  alunos do curso Sistemas Construtivos e Restauros por meio da parceria com a Secretaria de Cultura, CRAS Vila Brasileira, equipes da SEMAS, além de parceiros como o SEBRAE...",
+            "avatar": "images/news-images/feira-de-troca.jpeg",
+            "alternative": "foto da 2ª Feira de Troca e Formação em Economia Solidária"
+        },
+        {
+            "id": 2,
+            "url": "https://www.mogidascruzes.sp.gov.br/noticia/primeira-edicao-de-2025-da-feira-de-economia-solidaria-sera-realizada-neste-sabado",
+            "role": "Secretaria de Assistência Social",
+            "call": "O evento será no Largo da Feira de Jundiapeba, das 10h às 16h, aliando exposição e venda de produtos de grupos de empreendedorismo solidário com atividades culturais",
+            "title": "Primeira edição de 2025 da Feira de Economia Solidária será realizada neste sábado",
+            "text": "A Secretaria Municipal de Assistência Social, por meio do programa Conduz, vai promover neste sábado (22/02) a primeira edição do ano da Feira de Economia Solidária. O evento será no Largo da Feira de Jundiapeba, das 10h às 16h, aliando exposição e venda de produtos de grupos de empreendedorismo solidário com atrações artísticas.Serão cerca de 20 coletivos apresentando e comercializando itens dos segmentos de artesanato, gastronomia, acessórios e jardinagem. Os grupos são compostos majoritariamente por mulheres e seus familiares. A ideia é que a comunidade compareça, prestigie e consuma os produtos, incentivando assim a produção local e os princípios da economia solidária. Além da feira em si, haverá bingo solidário e atividades culturais. Todos os presentes poderão acompanhar e participar...",
+            "avatar": "images/news-images/primeira-feira-ES.jpg",
+            "alternative": "foto da Primeira edição de 2025 da Feira de Economia Solidária"
+        },
+        {
+            "id": 3,
+            "url": "https://www.mogidascruzes.sp.gov.br/noticia/segunda-edicao-da-feira-de-economia-solidaria-sera-realizada-neste-sabado-em-jundiapeba",
+            "role": "Secretaria de Assistência Social",
+            "call": "Novamente, coletivos de empreendedorismo solidário estarão no Largo da Feira, expondo e comercializando seus produtos",
+            "title": "Segunda edição da Feira de Economia Solidária será realizada neste sábado em Jundiapeba",
+            "text": "A Secretaria Municipal de Assistência Social, por meio do programa Conduz, vai promover neste sábado (08/03) a segunda edição do ano da Feira de Economia Solidária. O evento será no Largo da Feira de Jundiapeba, das 10h às 16h, aliando exposição e venda de produtos de grupos de empreendedorismo solidário com atrações artísticas. Serão cerca de 20 coletivos apresentando e comercializando itens dos segmentos de artesanato, gastronomia, acessórios e jardinagem. Os grupos são compostos majoritariamente por mulheres e seus familiares. A ideia é que a comunidade compareça, prestigie e consuma os produtos, incentivando assim a produção local e os princípios da economia solidária. Além da feira em si, haverá atividades culturais, como música ao vivo, em celebração ao Dia Internacional da Mulher...",
+            "avatar": "images/news-images/segunda-feira-ES.jpg",
+            "alternative": "foto da Segunda edição da Feira de Economia Solidária"
+        },
+        {
+            "id": 4,
+            "url": "https://www.mogidascruzes.sp.gov.br/noticia/terceira-edicao-da-feira-de-economia-solidaria-sera-realizada-neste-sabado-no-largo-da-feira-de-jundiapeba",
+            "role": "Secretaria de Assistência Social",
+            "call": "Feira reúne grupos de empreendedorismo solidário, que expõem e vendem seus produtos aos visitantes",
+            "title": "Terceira edição da Feira de Economia Solidária será realizada neste sábado no Largo da Feira de Jundiapeba",
+            "text": "A Secretaria Municipal de Assistência Social, por meio do programa Conduz, vai promover neste sábado (12/04), das 11h às 18h, a terceira edição de 2025 da Feira de Economia Solidária. O evento será no Largo da Feira de Jundiapeba e, assim como em edições anteriores, vai aliar exposição e venda de produtos confeccionados por grupos de empreendedorismo solidário e atrações musicais.Serão cerca de 20 coletivos apresentando e comercializando itens dos segmentos de artesanato, gastronomia, acessórios e jardinagem. Os grupos são compostos majoritariamente por mulheres e seus familiares. A ideia é que a comunidade compareça, prestigie e consuma os produtos, incentivando assim a produção local e os princípios da economia solidária. Além da feira em si, haverá programação musical das 14h às 18h...",
+            "avatar": "images/news-images/terceira-feira-ES.jpg",
+            "alternative": "foto da Terceira edição da Feira de Economia Solidária"
+        }
+    ]
+}

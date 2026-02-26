@@ -1,0 +1,22 @@
+.navVendor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    padding:5px 0;
+}
+
+.titleCategory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8rem;
+    color: rgb(105, 105, 105);
+    padding: .6rem;
+    background: var(--body-color);
+}
+
+.btnCategory {
+    text-align: center;
+    cursor: pointer;
+}

@@ -1,0 +1,28 @@
+    .whereSection {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+
+    }
+
+    .whereTitle {}
+
+
+
+
+    @media (min-width: 1200px) {
+
+        .whereSection {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+
+        }
+
+        .whereTitle {
+            height: 8rem;
+        }
+
+    }

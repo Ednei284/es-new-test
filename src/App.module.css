@@ -1,0 +1,13 @@
+.main {
+  /* margin-top: 108px; */
+  padding: 0 5px;
+}
+
+@media (min-width: 1200px) {
+  .main {
+  margin-top: 78px;
+
+    padding: 0 10rem;
+  }
+
+}

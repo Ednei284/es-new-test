@@ -1,0 +1,35 @@
+.destaqueContent {
+    display: flex;
+    height: 100%;
+    overflow: auto;
+    overflow-y: hidden;
+    position: relative;
+    top: 0;
+    gap: .2rem;
+}
+
+.destaqueCard {
+    display: flex;
+    padding: .5rem;
+    background-color: var(--base-color-second-light);
+    justify-content: start;
+    align-items: first baseline;
+    padding: .5rem;
+    height: 300px;
+    border-radius: .5rem;
+
+}
+
+.destaqueCard img {
+    height: 150px;
+    border-radius: .5rem;
+    width: 150px;
+
+
+}
+
+@media (min-width:1200px) {
+    .destaqueContainer {
+        margin: 0 14rem
+    }
+}

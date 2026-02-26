@@ -1,0 +1,103 @@
+    .adBanner {
+        position: fixed;
+        z-index: 1000;
+        top: 5px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.2);
+        overflow: hidden;
+        background-color: var(--body-color);
+        width: 400px;
+        height: 100px;
+        transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    .left {
+        left: 25px;
+    }
+
+    .right {
+        right: 25px;
+    }
+
+    .minimized {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    .adBanner img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+
+    .adBanner a:hover img {
+        transform: scale(1.05);
+    }
+
+    .closeButton {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        transition: background-color 0.2s;
+        z-index: 1;
+    }
+
+    .closeButton:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .showButton {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: background-color 0.2s;
+    }
+
+    .showButton:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Tamanho fixo para desktop */
+    @media (min-width: 1200px) {
+        .adBanner {
+            width: 200px;
+            /* Largura fixa */
+            height: 525px;
+            /* Altura fixa */
+            top: 80px;
+        }
+
+        .left {
+            left: 20px;
+        }
+
+        .right {
+            right: 20px;
+        }
+
+        .minimized {
+            width: 50px;
+            height: 50px;
+        }
+    }

@@ -1,0 +1,43 @@
+.popup {
+    height: 40%;
+    width: 100vw;
+    background-color: #000000b9;
+    position: fixed;
+    bottom: 0;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 1000;
+
+}
+
+.paragr {
+
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(209, 209, 209);
+}
+
+.anch {
+    color: var(--base-color);
+}
+
+.anch:hover {
+    cursor: pointer;
+    color: var(--base-color);
+}
+
+.button {
+    width: 20%;
+    padding: 20px;
+    background-color: var(--base-color);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.button:hover {}

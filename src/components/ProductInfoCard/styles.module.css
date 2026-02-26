@@ -1,0 +1,104 @@
+.productCard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productImage {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.detailsLabel {
+    color: var(--text-color-light);
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.productTitle {
+    font-size: 2rem;
+    color: var(--title-color);
+    margin-bottom: 1rem;
+}
+
+.productDescription {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.specs {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.specs p {
+    margin-bottom: 0.5rem;
+}
+
+.priceSection {
+    margin-bottom: 1.5rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--base-color);
+    margin-bottom: 0.5rem;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: auto;
+    /* Alinha os botões na parte inferior */
+}
+
+.whatsAppButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background-color: #25D366 !important;
+    /* Usando !important para garantir a sobreposição da classe .button */
+    color: white !important;
+    transition: background-color 0.3s;
+}
+
+.whatsAppButton:hover {
+    background-color: #128C7E !important;
+}
+
+/* Media query para telas maiores */
+@media (min-width: 768px) {
+    .productCard {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+
+    .actions {
+        flex-direction: row;
+        align-items: center;
+    }
+}

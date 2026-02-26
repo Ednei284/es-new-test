@@ -1,0 +1,47 @@
+.titleerror {
+    text-align: center;
+}
+
+.gifimage {
+    position: relative;
+    left: 130px;
+    object-fit: cover;
+    height: 423px;
+    border-radius: 1rem;
+    width: 300px;
+}
+
+.buttonachor {
+    margin: .5rem auto;
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    align-items: center;
+
+
+}
+
+@media (min-width: 1200px) {
+    .gifimage {
+        position: relative;
+        left: 608px;
+        object-fit: cover;
+        height: 422px;
+        border-radius: 1rem;
+        width: 300px;
+    }
+
+    .buttonachor {
+        margin: .5rem auto;
+        display: flex;
+        justify-content: center;
+        width: 300px;
+        align-items: center;
+
+
+    }
+
+    .titleerror {
+        text-align: center;
+    }
+}

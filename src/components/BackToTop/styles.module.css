@@ -1,0 +1,37 @@
+/* components/BackToTop/styles.module.css */
+.backToTop {
+    background: var(--base-color);
+    color: var(--text-color-light);
+    position: fixed;
+    right: 1rem;
+    bottom: calc(var(--header-height) + 1rem);
+    /* Posiciona acima da barra de navegação mobile */
+    padding: 0.75rem;
+    clip-path: circle();
+    font-size: 1.25rem;
+    line-height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    transform: translateY(100%);
+    border: none;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.backToTop.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.backToTop:hover {
+    background: var(--base-color-alt);
+}
+
+@media (min-width: 1200px) {
+    .backToTop {
+        bottom: 2rem;
+        /* Posição no desktop */
+    }
+}

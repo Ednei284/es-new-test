@@ -1,0 +1,25 @@
+.logo {
+    font: 700 1.31rem var(--title-font);
+    color: var(--title-color-);
+}
+
+.logo span {
+    color: var(--base-color);
+}
+
+.logo-alt span {
+    color: var(--body-color);
+}
+
+.imglogo {
+    height: 50px;
+    width: 100px;
+
+}
+
+@media (max-width: 1200px) {
+    .imglogo {
+        height: 65px;
+        width: 125px;
+    }
+}
