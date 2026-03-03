@@ -21,7 +21,7 @@ export function AppRoutes() {
       <Route path="/onde/:slide_caption" element={<WhereDetails />} />
       <Route path="/empreendimentos" element={<Enterprises />} />
 
-      {/* categories, vendors and products */}
+      {/*  vendors and products */}
       <Route
         path="/:vendor_name/:vendor_id"
         element={<ProductsVendor />}

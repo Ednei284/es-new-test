@@ -1,18 +1,14 @@
 import styles from "./styles.module.css";
-// import dataProducts from "../../assets/data/data-products/dataproducts.json";
-// import dataVendors from "../../assets/data/data-vendors/datavendors.json";
-// import dataCategories from "../../assets/data/data-categories/datacategories.json";
 import { AllVendorsByCategory } from "../../components/AllVendorsByCategory/AllVendorsByCategory";
 import { useEffect, useState } from "react";
 import { Card } from "../../components/Card";
 import { Link } from "react-router-dom";
 import api from "../../assets/services/api";
 
-const productPerPage = 32;
+const productPerPage = 18;
 
 export function Enterprises() {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  // const [dataCategories, setDataCategory] = useState([]);
   const [dataVendors, setDataVendors] = useState([]);
   const [dataProducts, setDataProducts] = useState([]);
 
@@ -188,18 +184,22 @@ export function Enterprises() {
 
         <div className={styles.productsGrid}>
           {paginatedProducts.map((product) => {
-
+            const vendor = dataVendors.find((v) => v.id === product.vendorId);
+            if (!vendor) return null;
 
             return (
-              <Link
-                key={product.id}
-                to={`/${product.title}/${product.id}`}
-                className={styles.productLink}
-              >
-                <Card products={product} />
-              </Link>
+              <>
+                <Link
+                  key={product.id}
+                  to={`/${vendor.name}/${vendor.id}/${product.title}/${product.id}`}
+                  className={styles.productLink}
+                >
+                  <Card products={product} />
+                </Link>
+              </>
             );
           })}
+
         </div>
 
         {/* Paginação Inferior */}

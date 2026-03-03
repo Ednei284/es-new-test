@@ -6,7 +6,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const ImageSlider = ({ images }) => {
+const ImageSlider = ({ images, alternativeText }) => {
+    if (!Array.isArray(images)) {
+        return <img src={images} alt={alternativeText} style={{ width: '100%', height: '300px', objectFit: 'contain' }} />;
+    }
     return (
         <div style={{ width: '100%', maxWidth: '300px', margin: ' 0 auto' }}>
             <Swiper
@@ -21,7 +24,7 @@ const ImageSlider = ({ images }) => {
                     <SwiperSlide key={index}>
                         <img
                             src={img}
-                            alt={`Slide ${index}`}
+                            alt={`${alternativeText}`}
                             style={{ width: '100%', height: '300px', objectFit: 'contain' }}
                         />
                     </SwiperSlide>
