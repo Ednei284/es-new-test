@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Card } from "../../components/Card";
 import { Link } from "react-router-dom";
 import api from "../../assets/services/api";
+import { ClickLogger } from "../../components/ClickLogger";
 
 const productPerPage = 18;
 
@@ -188,15 +189,20 @@ export function Enterprises() {
             if (!vendor) return null;
 
             return (
-              <>
-                <Link
-                  key={product.id}
-                  to={`/${vendor.name}/${vendor.id}/${product.title}/${product.id}`}
-                  className={styles.productLink}
+              <Link
+                key={product.id}
+                to={`/${vendor.name}/${vendor.id}/${product.title}/${product.id}`}
+                className={styles.productLink}
+              >
+                <ClickLogger
+                  id={product.vendorId}
+                  productId={product.id}
+                  url='/product/update-click-product'
                 >
                   <Card products={product} />
-                </Link>
-              </>
+                </ClickLogger>
+
+              </Link>
             );
           })}
 

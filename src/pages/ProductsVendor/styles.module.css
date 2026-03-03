@@ -128,7 +128,7 @@
     .productCard {
     display: grid;
 
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         /* 4 colunas em telas grandes */
         gap: 32px;
     }

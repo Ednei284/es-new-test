@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-import { LogClick } from "../ClickLogger";
+import { ClickLogger } from "../ClickLogger";
 // Função para embaralhar array
 function shuffle(array) {
   const arr = [...array];
@@ -45,7 +45,7 @@ export function AllVendorsByCategory({ vendorsJson }) {
       <ul className={styles.vendorRowList}>
         {shuffledVendors.map((vendor) =>
           <li className={styles.vendorItem} key={vendor.id}>
-            <LogClick
+            <ClickLogger
               id={vendor.id}
               url='/vendor/update-click-vendor'
             >
@@ -60,7 +60,7 @@ export function AllVendorsByCategory({ vendorsJson }) {
                 />
                 <div className={styles.vendorName}>{vendor.name}</div>
               </Link>
-            </LogClick>
+            </ClickLogger>
           </li>
         )
         }

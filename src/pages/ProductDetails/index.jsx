@@ -31,7 +31,6 @@ export function ProductDetails() {
       })
         .then(response => {
           setDataProducts(response.data); // Dados retornados pela API
-          console.log(response.data);
         })
         .catch(error => {
           console.error('Erro na requisição:', error);
@@ -58,11 +57,13 @@ export function ProductDetails() {
 
   return (
     <section id="products" className={styles.sectionProducts}>
-      <h1>{product_name}</h1>
       <div className={styles.productMain}>
 
         {
-          dataProducts && <ProductInfoCard product={dataProducts} vendorName={vendor_name} whatsAppLink={whatsAppLink} />
+          dataProducts &&
+
+
+          <ProductInfoCard product={dataProducts} vendorName={vendor_name} whatsAppLink={whatsAppLink} />
         }
 
       </div>
