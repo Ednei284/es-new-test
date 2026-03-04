@@ -5,7 +5,7 @@ import api from "../../assets/services/api";
 import { useState } from "react";
 
 export function Home() {
-  const [dataVendors, setDataVendors] = useState([])
+  const [dataVendors, setDataVendors] = useState(null)
   const [dataProducts, setDataProducts] = useState([])
   useEffect(() => {
     async function loadVendors() {
@@ -82,9 +82,7 @@ export function Home() {
               <div className={styles.statItem}>
                 <h3 className={styles.statNumber}>
                   {
-                    dataVendors.filter(
-                      (vendor) => vendor.id != 0,
-                    ).length
+                    dataVendors?.length || 0
                   }
                   +
                   <p className={styles.statLabel}>Empreendimentos</p>
@@ -93,7 +91,7 @@ export function Home() {
 
               <div className={styles.statItem}>
                 <h3 className={styles.statNumber}>
-                  {dataProducts.length}+
+                  {dataProducts?.length}+
                   <p className={styles.statLabel}>Produtos</p>
                 </h3>
               </div>

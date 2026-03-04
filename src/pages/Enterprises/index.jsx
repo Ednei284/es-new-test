@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import api from "../../assets/services/api";
 import { ClickLogger } from "../../components/ClickLogger";
 
-const productPerPage = 18;
+const productPerPage = 36;
 
 export function Enterprises() {
   const [selectedCategory, setSelectedCategory] = useState("all");
