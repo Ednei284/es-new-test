@@ -5,14 +5,14 @@ import api from "../../assets/services/api";
 import { useState } from "react";
 
 export function Home() {
-  const [dataVendors, setDataVendors] = useState(null)
+  const [dataVendors, setDataVendors] = useState([])
   const [dataProducts, setDataProducts] = useState([])
   useEffect(() => {
     async function loadVendors() {
       await api.get('/vendor-all')
-        .then(response => {
-          setDataVendors(response.data); // Dados retornados pela API
-        })
+        .then(response =>
+          setDataVendors(response.data)
+        )
         .catch(error => {
           console.error('Erro na requisição:', error);
         });
@@ -22,9 +22,9 @@ export function Home() {
   useEffect(() => {
     async function loadVendors() {
       await api.get('/product-all')
-        .then(response => {
-          setDataProducts(response.data); // Dados retornados pela API
-        })
+        .then(response =>
+          setDataProducts(response.data)
+        )
         .catch(error => {
           console.error('Erro na requisição:', error);
         });
@@ -82,7 +82,7 @@ export function Home() {
               <div className={styles.statItem}>
                 <h3 className={styles.statNumber}>
                   {
-                    dataVendors?.length || 0
+                    dataVendors.filter(vendor => vendor.id).length
                   }
                   +
                   <p className={styles.statLabel}>Empreendimentos</p>
@@ -91,7 +91,7 @@ export function Home() {
 
               <div className={styles.statItem}>
                 <h3 className={styles.statNumber}>
-                  {dataProducts?.length}+
+                  {dataProducts.filter(product => product.id).length}+
                   <p className={styles.statLabel}>Produtos</p>
                 </h3>
               </div>

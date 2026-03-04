@@ -20,9 +20,7 @@ export function Enterprises() {
   useEffect(() => {
     async function loadVendors() {
       await api.get('/vendor-all')
-        .then(response => {
-          setDataVendors(response.data); // Dados retornados pela API
-        })
+        .then(response => setDataVendors(response.data))
         .catch(error => {
           console.error('Erro na requisição:', error);
         });
@@ -32,9 +30,9 @@ export function Enterprises() {
   useEffect(() => {
     async function loadVendors() {
       await api.get('/product-all')
-        .then(response => {
-          setDataProducts(response.data); // Dados retornados pela API
-        })
+        .then(response =>
+          setDataProducts(response.data) // Dados retornados pela API
+        )
         .catch(error => {
           console.error('Erro na requisição:', error);
         });

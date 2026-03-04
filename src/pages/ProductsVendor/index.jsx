@@ -11,24 +11,22 @@ import ImageSlider from "../../components/ImageSlider";
 
 export function ProductsVendor() {
   const { vendor_name, vendor_id } = useParams("");
-  const [dataVendors, setDataVendors] = useState(null)
+  const [dataVendors, setDataVendors] = useState([])
   const [dataProducts, setDataProducts] = useState([])
 
   useEffect(() => {
     async function loadData() {
-      try {
-        const vRes = await api.post('/vendor-id', { id: parseInt(vendor_id) });
-        // Se a API retorna um array, use vRes.data[0]
-        setDataVendors(vRes.data);
-
-        const pRes = await api.post('/product-all-id', { vendorId: parseInt(vendor_id) });
-        setDataProducts(pRes.data);
-      } catch (error) {
-        console.error('Erro ao carregar dados:', error);
-      }
+      await api.post('/vendor-id', { id: parseInt(vendor_id) }).then(response => setDataVendors(response.data)).catch(error => {
+        console.error('Erro na requisição :', error);
+      });
+      await api.post('/product-all-id', { vendorId: parseInt(vendor_id) }).then(response => setDataProducts(response.data)).catch(error => {
+        console.error('Erro na requisição :', error);
+      });
     }
     loadData();
   }, [])
+  console.log(dataVendors);
+  console.log(dataProducts);
 
   if (!dataVendors) return <p>Carregando...</p>;
   return (

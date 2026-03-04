@@ -14,9 +14,9 @@ export function ProductDetails() {
   useEffect(() => {
     async function loadVendors() {
       await api.post('/vendor-id', { id: parseInt(vendor_id) })
-        .then(response => {
-          setDataVendors(response.data); // Dados retornados pela API
-        })
+        .then(response => 
+          setDataVendors(response.data) 
+        )
         .catch(error => {
           console.error('Erro na requisição /vendor-id:', error);
         });
@@ -29,9 +29,9 @@ export function ProductDetails() {
         id: product_id,
         vendorId: vendor_id,
       })
-        .then(response => {
-          setDataProducts(response.data); // Dados retornados pela API
-        })
+        .then(response => 
+          setDataProducts(response.data)
+        )
         .catch(error => {
           console.error('Erro na requisição:', error);
         });
