@@ -82,7 +82,7 @@ export function Home() {
               <div className={styles.statItem}>
                 <h3 className={styles.statNumber}>
                   {
-                    dataVendors.filter(vendor => vendor.id).length
+                    dataVendors.length
                   }
                   +
                   <p className={styles.statLabel}>Empreendimentos</p>
@@ -91,7 +91,7 @@ export function Home() {
 
               <div className={styles.statItem}>
                 <h3 className={styles.statNumber}>
-                  {dataProducts.filter(product => product.id).length}+
+                  {dataProducts.length}+
                   <p className={styles.statLabel}>Produtos</p>
                 </h3>
               </div>
