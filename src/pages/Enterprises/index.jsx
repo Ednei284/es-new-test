@@ -36,8 +36,9 @@ export function Enterprises() {
     const names = safeVendors.map(v => v.categoryName).filter(Boolean);
     return [...new Set(names)];
   }, [dataVendors]);
+  const safeVendors = Array.isArray(dataProducts) ? dataProducts : [];
 
-  const prices = dataProducts?.map((p) => p.price);
+  const prices = safeVendors.map((p) => p.price);
   const maxPrice = Math.max(...prices);
   const [priceRange, setPriceRange] = useState([0, 10000]);
   // Filtro de produtos
