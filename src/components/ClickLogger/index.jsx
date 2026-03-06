@@ -1,7 +1,7 @@
 import api from '../../assets/services/api/index'
 
 export const ClickLogger = ({ children, id, productId, url }) => {
-    const handleClick = async () => {
+    async () => {
         try {
             if (url === '/vendor/update-click-vendor') {
                 const response = await api.patch(url, {
@@ -33,12 +33,9 @@ export const ClickLogger = ({ children, id, productId, url }) => {
         } catch (error) {
             console.error('Erro ao chamar a API:', error);
         }
-    };
-    return divComponent(handleClick, children);
-}
+    }
 
-function divComponent(handleClick, children) {
-    return (<div style={{ backgroundColor: 'transparent', background: 'transparent', border: 'none', transform: '.3s', transition: 'all .3s' }} onClick={handleClick}>
+    return <>
         {children}
-    </div>)
+    </>
 }

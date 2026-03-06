@@ -54,11 +54,7 @@ export function ProductsVendor() {
 
       <div className={styles.productCard}>
         {dataProducts.length > 0 && dataProducts.map((product, idx) =>
-          <div
-            key={idx}
-          >
-            <Card products={product} vendor_name={vendor_name} vendor_id={vendor_id} />
-          </div>
+          <Card key={idx} products={product} vendor_name={vendor_name} vendor_id={vendor_id} />
         )
         }
       </div>

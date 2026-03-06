@@ -83,6 +83,7 @@
     /* Usando !important para garantir a sobreposição da classe .button */
     color: white !important;
     transition: background-color 0.3s;
+    gap: .25rem;
     padding: .25rem;
     border-radius: .25rem;
 }
@@ -141,6 +142,7 @@
   display: flex;
   justify-content: space-between; /* Alinha label na esquerda e valor na direita */
   padding: 0.85rem 0;
+  align-items: center;
   border-bottom: 1px solid #eee;
   gap: 1rem;
 }
