@@ -32,31 +32,29 @@ export function Enterprises() {
   }, [])
   const uniqueCategories = useMemo(() => {
     // Extrai apenas os nomes e remove duplicatas usando Set
-    const names = dataVendors.map(v => v.categoryName).filter(Boolean);
+    const names = dataVendors?.map(v => v.categoryName).filter(Boolean);
     return [...new Set(names)];
   }, [dataVendors]);
 
-  const prices = dataProducts.map((p) => p.price);
+  const prices = dataProducts?.map((p) => p.price);
   const maxPrice = Math.max(...prices);
   const [priceRange, setPriceRange] = useState([0, 10000]);
   // Filtro de produtos
-  const filteredProducts = dataProducts
-    .filter((product) => {
-      // 1. Acha o vendedor dono deste produto
-      const vendor = dataVendors.find(v => v.id === product.vendorId);
-      const vendorCat = vendor?.categoryName || "";
-
-      // 2. Verifica se a categoria bate
-      const inCategory =
-        selectedCategory === "all" ||
-        vendorCat.trim().toLowerCase() === selectedCategory.trim().toLowerCase();
-      const inPrice =
-        product.price >= priceRange[0] && product.price <= priceRange[1];
-      const inTitle =
-        selectedTitle === "" ||
-        product.categoryName.toLowerCase().includes(selectedTitle.toLowerCase());
-      return inCategory && inPrice && inTitle;
-    })
+  const filteredProducts = dataProducts?.filter((product) => {
+    // 1. Acha o vendedor dono deste produto
+    const vendor = dataVendors?.find(v => v.id === product.vendorId);
+    const vendorCat = vendor?.categoryName || "";
+    // 2. Verifica se a categoria bate
+    const inCategory =
+      selectedCategory === "all" ||
+      vendorCat.trim().toLowerCase() === selectedCategory.trim().toLowerCase();
+    const inPrice =
+      product.price >= priceRange[0] && product.price <= priceRange[1];
+    const inTitle =
+      selectedTitle === "" ||
+      product.categoryName.toLowerCase().includes(selectedTitle.toLowerCase());
+    return inCategory && inPrice && inTitle;
+  })
     .sort((a, b) => a.price - b.price);
 
   // Gera ranges de preço
@@ -71,7 +69,7 @@ export function Enterprises() {
 
   // Conta títulos duplicados
   const titleCount = {};
-  dataProducts.forEach((product) => {
+  dataProducts?.forEach((product) => {
     titleCount[product.categoryName] = (titleCount[product.categoryName] || 0) + 1;
   });
 
@@ -81,7 +79,7 @@ export function Enterprises() {
 
   const totalPages = Math.ceil(filteredProducts.length / productPerPage);
   const startIdx = (currentPage - 1) * productPerPage;
-  const paginatedProducts = filteredProducts.slice(
+  const paginatedProducts = filteredProducts?.slice(
     startIdx,
     startIdx + productPerPage,
   );
@@ -110,7 +108,7 @@ export function Enterprises() {
               }}
             >
               <option value="all">Todas</option>
-              {uniqueCategories.map((catName) => (
+              {uniqueCategories?.map((catName) => (
                 <option key={catName} value={catName}>
                   {catName}
                 </option>
@@ -149,7 +147,7 @@ export function Enterprises() {
               }}
             >
               <option value="">Todos</option>
-              {allowedTitles.map((title) => (
+              {allowedTitles?.map((title) => (
                 <option key={title} value={title}>
                   {title.charAt(0).toUpperCase() + title.slice(1)}
                 </option>
@@ -182,7 +180,7 @@ export function Enterprises() {
 
         <div className={styles.productsGrid}>
           {paginatedProducts.map((product) => {
-            const vendor = dataVendors.find((v) => v.id === product.vendorId);
+            const vendor = dataVendors?.find((v) => v.id === product.vendorId);
             if (!vendor) return null;
             return (
               <Card products={product} vendor_name={vendor.name} vendor_id={vendor.id} />
