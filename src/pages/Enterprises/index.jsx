@@ -32,7 +32,8 @@ export function Enterprises() {
   }, [])
   const uniqueCategories = useMemo(() => {
     // Extrai apenas os nomes e remove duplicatas usando Set
-    const names = dataVendors?.map(v => v.categoryName).filter(Boolean);
+    const safeVendors = Array.isArray(dataVendors) ? dataVendors : [];
+    const names = safeVendors.map(v => v.categoryName).filter(Boolean);
     return [...new Set(names)];
   }, [dataVendors]);
 

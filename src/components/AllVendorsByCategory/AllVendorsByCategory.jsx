@@ -17,7 +17,8 @@ export function AllVendorsByCategory({ vendorsJson }) {
   const [shuffledVendors, setShuffledVendors] = useState([]);
 
   const uniqueCategories = useMemo(() => {
-    const categories = vendorsJson.map(v => v.categoryName)
+    const safeVendors = Array.isArray(vendorsJson) ? vendorsJson : [];
+    const categories = safeVendors.map(v => v.categoryName)
     return [...new Set(categories)]
   }, [vendorsJson])
   useEffect(() => {
