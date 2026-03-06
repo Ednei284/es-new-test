@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import { ClickLogger } from "../ClickLogger";
@@ -16,11 +16,15 @@ export function AllVendorsByCategory({ vendorsJson }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [shuffledVendors, setShuffledVendors] = useState([]);
 
+  const uniqueCategories = useMemo(() => {
+    const categories = vendorsJson.map(v => v.categoryName)
+    return [...new Set(categories)]
+  }, [vendorsJson])
   useEffect(() => {
     let filtered = vendorsJson;
     if (selectedCategory !== "all") {
       filtered = vendorsJson.filter(
-        (v) => v.id === Number(selectedCategory),
+        (v) => v.categoryName === selectedCategory,
       );
     }
     setShuffledVendors(shuffle(filtered));
@@ -35,9 +39,9 @@ export function AllVendorsByCategory({ vendorsJson }) {
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
           <option value="all">Todos empreendimentos</option>
-          {vendorsJson.map((cat) => (
-            <option key={cat.id} value={cat.id}>
-              {cat.categoryName}
+          {uniqueCategories.map((catName, idx) => (
+            <option key={idx} value={catName}>
+              {catName}
             </option>
           ))}
         </select>

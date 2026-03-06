@@ -5,13 +5,10 @@ import styles from "./styles.module.css";
 export const NavInter = ({ path, name }) => {
   return (
     <div className={`${styles.navVendor} `}>
-      <Link className={`${styles.btnCategory} button`} to={path}>
-        Voltar
-      </Link>
       {name && (
-        <Divider2>
-          <p className={`${styles.titleCategory}`}>{name} </p>
-        </Divider2>
+        <Link className={`${styles.btnCategory} button`} to={path}>
+          Voltar para {name}
+        </Link>
       )}
     </div>
   );

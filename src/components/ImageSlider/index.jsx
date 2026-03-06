@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 
 const ImageSlider = ({ images, alternativeText }) => {
     if (!Array.isArray(images)) {
-        return <img src={images} alt={alternativeText} style={{ borderRadius: '1 rem', backgroundColor: '#504040', width: '100%', height: '300px', objectFit: 'contain' }} />;
+        return <img src={images} alt={alternativeText} style={{ backgroundColor: '#504040', width: '100%', height: '300px', objectFit: 'contain', borderRadius: '.25rem' }} />;
     }
     return (
         <div style={{ width: '100%', maxWidth: '300px', margin: ' 0 auto' }}>
@@ -25,7 +25,7 @@ const ImageSlider = ({ images, alternativeText }) => {
                         <img
                             src={img}
                             alt={`${alternativeText}`}
-                            style={{ width: '100%', height: '300px', objectFit: 'contain' }}
+                            style={{ width: '100%', height: '300px', objectFit: 'contain', borderRadius: '.25rem' }}
                         />
                     </SwiperSlide>
                 ))}

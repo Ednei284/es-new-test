@@ -1,7 +1,7 @@
 .productCard {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1rem;
     padding: 1rem;
     background-color: #fff;
     border-radius: 8px;
@@ -79,11 +79,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
     background-color: #25D366 !important;
     /* Usando !important para garantir a sobreposição da classe .button */
     color: white !important;
     transition: background-color 0.3s;
+    padding: .25rem;
+    border-radius: .25rem;
 }
 
 .whatsAppButton:hover {
@@ -101,4 +102,76 @@
         flex-direction: row;
         align-items: center;
     }
+}
+
+.productContainer {
+  padding: 1rem;
+  max-width: 600px; /* Limita a largura no desktop */
+}
+
+.detailsLabel {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #666;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.productTitle {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.productDescription {
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* Estrutura da Tabela */
+.specsTable {
+  border-top: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableRow {
+  display: flex;
+  justify-content: space-between; /* Alinha label na esquerda e valor na direita */
+  padding: 0.85rem 0;
+  border-bottom: 1px solid #eee;
+  gap: 1rem;
+}
+
+.tableLabel {
+  font-weight: 500;
+  color: #777;
+  flex-shrink: 0; /* Impede o label de "esmagar" */
+}
+
+.tableValue {
+  color: #222;
+  text-align: right;
+  word-break: break-word; /* Evita que textos longos quebrem o layout */
+}
+
+.priceHighlight {
+  font-weight: bold;
+  color: #2ecc71; /* Um verde suave para o preço */
+  font-size: 1.1rem;
+}
+
+/* Ajuste para telas MUITO pequenas (Mobile antigo) */
+@media (max-width: 350px) {
+  .tableRow {
+    flex-direction: column; /* Empilha label e valor */
+    align-items: flex-start;
+  }
+  
+  .tableValue {
+    text-align: left;
+    margin-top: 0.2rem;
+  }
 }

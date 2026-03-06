@@ -106,11 +106,6 @@
   width: 100%;
 }
 
-.imgProfile {
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-}
 
 .cardContent {
   width: 100%;
@@ -131,7 +126,9 @@
     align-items: center;
     justify-content: space-between;
   }
-
+.profilePhoto{
+  border-radius: .25rem;
+}
   .productCard {
     width: 100%;
     grid-template-columns: repeat(3, 1fr);

@@ -7,30 +7,23 @@ import { useState } from "react";
 export function Home() {
   const [dataVendors, setDataVendors] = useState([])
   const [dataProducts, setDataProducts] = useState([])
+
   useEffect(() => {
-    async function loadVendors() {
+    async function loadData() {
       await api.get('/vendor-all')
-        .then(response =>
-          setDataVendors(response.data)
-        )
+        .then(response => setDataVendors(response.data))
         .catch(error => {
-          console.error('Erro na requisição:', error);
+          console.error('Erro na requisição :', error);
         });
-    }
-    loadVendors()
-  }, [])
-  useEffect(() => {
-    async function loadVendors() {
       await api.get('/product-all')
-        .then(response =>
-          setDataProducts(response.data)
-        )
+        .then(response => setDataProducts(response.data))
         .catch(error => {
-          console.error('Erro na requisição:', error);
+          console.error('Erro na requisição :', error);
         });
     }
-    loadVendors()
+    loadData();
   }, [])
+
   return (
     <>
       <div className={styles.imgHome}>
@@ -41,8 +34,20 @@ export function Home() {
         {/* alteração */}
         <div className={`${styles.container} grid`}>
           <div className={styles.text}>
-            <h2 className={styles.title}>Sobre nós</h2>
+            <div className={styles.stats}>
+              <div className={styles.statItem}>
+                <h3 className={styles.statNumber}>
+                  {dataVendors.length}+ Empreendimentos
+                </h3>
+              </div>
 
+              <div className={styles.statItem}>
+                <h3 className={styles.statNumber}>
+                  {dataProducts.length}+ Produtos
+                </h3>
+              </div>
+            </div>
+            <h1 className={styles.title}>Sobre nós</h1>
             <h2 className={styles.subtitle}>O que é o MOGISOL</h2>
             <p>
               O Fórum Mogiano de Economia Solidária (MOGISOL) é um espaço
@@ -78,24 +83,7 @@ export function Home() {
               e potencialização dos trabalhos dos diversos empreendimentos que
               compõem a Rede de Economia Solidária municipal.
             </p>
-            <div className={styles.stats}>
-              <div className={styles.statItem}>
-                <h3 className={styles.statNumber}>
-                  {
-                    dataVendors.length
-                  }
-                  +
-                  <p className={styles.statLabel}>Empreendimentos</p>
-                </h3>
-              </div>
 
-              <div className={styles.statItem}>
-                <h3 className={styles.statNumber}>
-                  {dataProducts.length}+
-                  <p className={styles.statLabel}>Produtos</p>
-                </h3>
-              </div>
-            </div>
           </div>
         </div>
       </div>

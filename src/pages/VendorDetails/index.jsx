@@ -30,41 +30,41 @@ export function VendorDetails() {
 
     return (
         <section id="products" className={styles.sectionProducts}>
-            <NavInter
-                path={`/${vendor_name}/${vendor_id}`}
-                name={vendor_name} />
             <div>
-                {dataVendors &&
+                {dataVendors && dataVendors.filter(v => v.id === parseInt(vendor_id)).map(vendor =>
                     <ClickLogger
                         url='/vendor/update-click-vendor'
-                        id={dataVendors?.id}
+                        id={vendor.id}
+                        key={vendor.id}
                     >
                         <div>
-                            <div className={styles.profilePhoto}>
-                                <ImageSlider images={dataVendors?.profilePhoto} alternativeText={dataVendors?.name} />
-                            </div>
+                            <ImageSlider images={vendor.profilePhoto} alternativeText={vendor.name} />
                             <Divider1>
                                 <h2>
-                                    Informações de {dataVendors?.name}
+                                    Informações de {vendor.name}
                                 </h2>
                             </Divider1>
                             <div>
                                 <div>
-                                    <h2>Sobre {dataVendors?.name}</h2>
-                                    <p>{dataVendors?.about}</p>
+                                    <h2>Sobre {vendor.name}</h2>
+                                    <p>{vendor.about}</p>
                                     <h2> Integrantes</h2>
-                                    <p>{dataVendors?.integrants}</p>
+                                    <p>{vendor.integrants}</p>
                                     <h2>Categoria do empreendimento</h2>
-                                    <p> {dataVendors?.categoryName}</p>
+                                    <p> {vendor.categoryName}</p>
                                     <h2>WhatsApp</h2>
-                                    <p> {dataVendors?.whatsapp}</p>
+                                    <p> {vendor.whatsapp}</p>
 
                                 </div>
                             </div>
                         </div>
-                    </ClickLogger >
+                    </ClickLogger >)
                 }
             </div >
+            <NavInter
+                path={`/${vendor_name}/${vendor_id}`}
+                name={vendor_name}
+            />
         </section >
     );
 }

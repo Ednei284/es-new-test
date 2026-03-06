@@ -1,10 +1,8 @@
 import styles from "./styles.module.css";
 import { AllVendorsByCategory } from "../../components/AllVendorsByCategory/AllVendorsByCategory";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Card } from "../../components/Card";
-import { Link } from "react-router-dom";
 import api from "../../assets/services/api";
-import { ClickLogger } from "../../components/ClickLogger";
 
 const productPerPage = 36;
 
@@ -12,23 +10,16 @@ export function Enterprises() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [dataVendors, setDataVendors] = useState([]);
   const [dataProducts, setDataProducts] = useState([]);
-
-
   // Estado do preço modificado para facilitar o uso com Select
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTitle, setSelectedTitle] = useState("");
   useEffect(() => {
-    async function loadVendors() {
+    async function loadData() {
       await api.get('/vendor-all')
         .then(response => setDataVendors(response.data))
         .catch(error => {
           console.error('Erro na requisição:', error);
         });
-    }
-    loadVendors()
-  }, [])
-  useEffect(() => {
-    async function loadVendors() {
       await api.get('/product-all')
         .then(response =>
           setDataProducts(response.data) // Dados retornados pela API
@@ -37,19 +28,28 @@ export function Enterprises() {
           console.error('Erro na requisição:', error);
         });
     }
-    loadVendors()
+    loadData()
   }, [])
+  const uniqueCategories = useMemo(() => {
+    // Extrai apenas os nomes e remove duplicatas usando Set
+    const names = dataVendors.map(v => v.categoryName).filter(Boolean);
+    return [...new Set(names)];
+  }, [dataVendors]);
+
   const prices = dataProducts.map((p) => p.price);
   const maxPrice = Math.max(...prices);
   const [priceRange, setPriceRange] = useState([0, 10000]);
   // Filtro de produtos
   const filteredProducts = dataProducts
     .filter((product) => {
-      const productByVendor = dataVendors.find(v => v.id === product.vendorId);
-      const VendorCategory = productByVendor?.categoryName
+      // 1. Acha o vendedor dono deste produto
+      const vendor = dataVendors.find(v => v.id === product.vendorId);
+      const vendorCat = vendor?.categoryName || "";
+
+      // 2. Verifica se a categoria bate
       const inCategory =
         selectedCategory === "all" ||
-        VendorCategory?.trim().toLowerCase() === selectedCategory.trim().toLowerCase();
+        vendorCat.trim().toLowerCase() === selectedCategory.trim().toLowerCase();
       const inPrice =
         product.price >= priceRange[0] && product.price <= priceRange[1];
       const inTitle =
@@ -96,7 +96,6 @@ export function Enterprises() {
       <AllVendorsByCategory
         vendorsJson={dataVendors}
       />
-
       <aside className={styles.filters}>
         <h3>Filtrar por</h3>
         <div className={styles.filtersRow}>
@@ -111,9 +110,9 @@ export function Enterprises() {
               }}
             >
               <option value="all">Todas</option>
-              {dataVendors.map((v) => (
-                <option key={v.id} value={v.categoryName}>
-                  {v.categoryName}
+              {uniqueCategories.map((catName) => (
+                <option key={catName} value={catName}>
+                  {catName}
                 </option>
               ))}
             </select>
@@ -185,22 +184,8 @@ export function Enterprises() {
           {paginatedProducts.map((product) => {
             const vendor = dataVendors.find((v) => v.id === product.vendorId);
             if (!vendor) return null;
-
             return (
-              <Link
-                key={product.id}
-                to={`/${vendor.name}/${vendor.id}/${product.title}/${product.id}`}
-                className={styles.productLink}
-              >
-                <ClickLogger
-                  id={product.vendorId}
-                  productId={product.id}
-                  url='/product/update-click-product'
-                >
-                  <Card products={product} />
-                </ClickLogger>
-
-              </Link>
+              <Card products={product} vendor_name={vendor.name} vendor_id={vendor.id} />
             );
           })}
 

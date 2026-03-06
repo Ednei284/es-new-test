@@ -25,29 +25,29 @@ export function ProductsVendor() {
     }
     loadData();
   }, [])
-  console.log(dataVendors);
-  console.log(dataProducts);
 
-  if (!dataVendors) return <p>Carregando...</p>;
+  if (!dataVendors || dataVendors.length === 0) return <p>Carregando...</p>;
+  if (!dataProducts || dataProducts.length === 0) return <p>Sem produtos para {vendor_name}...</p>;
   return (
     <section id="products" className={styles.sectionProducts}>
       <div className={`${styles.productHeader} `}>
-        <NavInter path="/empreendimentos" name={vendor_name} />
+        <NavInter path="/empreendimentos" name={'Empreendimentos'} />
         <Link
           to={`/${vendor_name}/${vendor_id.toString()}/detalhes`}
         >
-          {dataVendors && dataVendors.id && (
+          {dataVendors && dataVendors.map(vendor => (
             <ClickLogger
-              id={dataVendors.id}
+              key={vendor.id}
+              id={vendor.id}
               url='/vendor/update-click-vendor'
             >
 
               <Divider3>
-                <ImageSlider images={dataVendors?.profilePhoto} alternativeText={dataVendors?.name} />
+                <ImageSlider images={vendor?.profilePhoto} alternativeText={vendor?.name} />
               </Divider3>
-              <p>{dataVendors?.name}</p>
+              <p>{vendor?.name}</p>
             </ClickLogger>
-          )
+          ))
           }
         </Link>
       </div>
@@ -57,17 +57,7 @@ export function ProductsVendor() {
           <div
             key={idx}
           >
-            <Link
-              to={`/${vendor_name}/${vendor_id.toString()}/${product.title}/${product.id}`}
-            >
-              <ClickLogger
-                id={vendor_id}
-                productId={product.id}
-                url='/product/update-click-product'
-              >
-                <Card products={product} />
-              </ClickLogger>
-            </Link>
+            <Card products={product} vendor_name={vendor_name} vendor_id={vendor_id} />
           </div>
         )
         }

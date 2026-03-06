@@ -12,31 +12,26 @@ export function ProductDetails() {
   const [dataProducts, setDataProducts] = useState([])
   const [dataVendors, setDataVendors] = useState([])
   useEffect(() => {
-    async function loadVendors() {
+    async function loadData() {
       await api.post('/vendor-id', { id: parseInt(vendor_id) })
-        .then(response => 
-          setDataVendors(response.data) 
+        .then(response =>
+          setDataVendors(response.data)
         )
         .catch(error => {
           console.error('Erro na requisição /vendor-id:', error);
         });
-    }
-    loadVendors()
-  }, [vendor_id])
-  useEffect(() => {
-    async function loadVendors() {
       await api.post('/product-one-id', {
         id: product_id,
         vendorId: vendor_id,
       })
-        .then(response => 
+        .then(response =>
           setDataProducts(response.data)
         )
         .catch(error => {
           console.error('Erro na requisição:', error);
         });
     }
-    loadVendors()
+    loadData()
   }, [vendor_id, product_id])
 
   const whatsAppLink = dataVendors.whatsapp || ""
@@ -44,7 +39,7 @@ export function ProductDetails() {
   // Se o produto não for encontrado, exibe uma mensagem amigável.
   if (dataProducts !== null && dataProducts.length === 0) {
     return (
-      <section className={styles.sectionProducts}>
+      <section >
         <div className={styles.productHeader}>
           <h2>Produto não encontrado</h2>
           <Link className="button" to={`/${vendor_name}/${vendor_id}`}>
@@ -56,16 +51,11 @@ export function ProductDetails() {
   }
 
   return (
-    <section id="products" className={styles.sectionProducts}>
+    <section  >
       <div className={styles.productMain}>
-
         {
-          dataProducts &&
-
-
-          <ProductInfoCard product={dataProducts} vendorName={vendor_name} whatsAppLink={whatsAppLink} />
+          dataProducts && <ProductInfoCard product={dataProducts} vendorName={vendor_name} whatsAppLink={whatsAppLink} />
         }
-
       </div>
       <NavInter
         path={`/${vendor_name}/${vendor_id}`}
