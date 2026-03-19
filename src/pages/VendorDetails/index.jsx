@@ -5,9 +5,9 @@ import { Divider1 } from '../../components/Divider/index.jsx';
 // import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa';
 import { NavInter } from '../../components/NavInter/index.jsx';
 import { useEffect } from 'react';
-import api from '../../assets/services/api/index.js';
 import { useState } from 'react';
 import ImageSlider from '../../components/ImageSlider/index.jsx';
+const baseURL = import.meta.env.VITE_HOST
 
 export function VendorDetails() {
     const {
@@ -16,16 +16,26 @@ export function VendorDetails() {
     } = useParams('')
     const [dataVendors, setDataVendors] = useState(null)
     useEffect(() => {
-        async function loadVendors() {
-            await api.post('/vendor-id', { id: parseInt(vendor_id) })
-                .then(response =>
-                    setDataVendors(response.data)
-                )
-                .catch(error => {
-                    console.error('Erro na requisição:', error);
-                });
+
+        async function fetchData() {
+            try {
+                const resVendors = await fetch(baseURL + '/vendor-id', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id: parseInt(vendor_id) })
+                })
+                if (resVendors.ok) {
+                    const data = await resVendors.json();
+                    setDataVendors(data);
+                }
+            } catch (error) {
+                console.error('Erro na requisição :', error);
+            }
         }
-        loadVendors()
+        fetchData()
+
     }, [])
 
     return (

@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import { AllVendorsByCategory } from "../../components/AllVendorsByCategory/AllVendorsByCategory";
 import { useEffect, useMemo, useState } from "react";
 import { Card } from "../../components/Card";
-import api from "../../assets/services/api";
+const baseURL = import.meta.env.VITE_HOST
 
 const productPerPage = 36;
 
@@ -14,21 +14,23 @@ export function Enterprises() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTitle, setSelectedTitle] = useState("");
   useEffect(() => {
-    async function loadData() {
-      await api.get('/vendor-all')
-        .then(response => setDataVendors(response.data))
-        .catch(error => {
-          console.error('Erro na requisição:', error);
-        });
-      await api.get('/product-all')
-        .then(response =>
-          setDataProducts(response.data) // Dados retornados pela API
-        )
-        .catch(error => {
-          console.error('Erro na requisição:', error);
-        });
+    async function fetchData() {
+      try {
+        const resVendors = await fetch(baseURL + '/vendor-all')
+        if (resVendors.ok) {
+          const data = await resVendors.json();
+          setDataVendors(data);
+        }
+        const resProducts = await fetch(baseURL + '/product-all')
+        if (resProducts.ok) {
+          const data = await resProducts.json();
+          setDataProducts(data);
+        }
+      } catch (error) {
+        console.error('Erro na requisição :', error);
+      }
     }
-    loadData()
+    fetchData()
   }, [])
   const uniqueCategories = useMemo(() => {
     // Extrai apenas os nomes e remove duplicatas usando Set

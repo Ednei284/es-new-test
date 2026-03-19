@@ -6,8 +6,9 @@ import { Divider3 } from "../../components/Divider";
 import { NavInter } from "../../components/NavInter";
 import { useState } from "react";
 import { useEffect } from "react";
-import api from "../../assets/services/api";
 import ImageSlider from "../../components/ImageSlider";
+const baseURL = import.meta.env.VITE_HOST
+
 
 export function ProductsVendor() {
   const { vendor_name, vendor_id } = useParams("");
@@ -15,15 +16,35 @@ export function ProductsVendor() {
   const [dataProducts, setDataProducts] = useState([])
 
   useEffect(() => {
-    async function loadData() {
-      await api.post('/vendor-id', { id: parseInt(vendor_id) }).then(response => setDataVendors(response.data)).catch(error => {
+    async function fetchData() {
+      try {
+        const resVendors = await fetch(baseURL + '/vendor-id', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: parseInt(vendor_id) })
+        })
+        if (resVendors.ok) {
+          const data = await resVendors.json();
+          setDataVendors(data);
+        }
+        const resProducts = await fetch(baseURL + '/product-all-id', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ vendorId: parseInt(vendor_id) }),
+        })
+        if (resProducts.ok) {
+          const data = await resProducts.json();
+          setDataProducts(data);
+        }
+      } catch (error) {
         console.error('Erro na requisição :', error);
-      });
-      await api.post('/product-all-id', { vendorId: parseInt(vendor_id) }).then(response => setDataProducts(response.data)).catch(error => {
-        console.error('Erro na requisição :', error);
-      });
+      }
     }
-    loadData();
+    fetchData()
   }, [])
 
   if (!dataVendors || dataVendors.length === 0) return <p>Carregando...</p>;

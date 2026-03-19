@@ -1,7 +1,8 @@
 import styles from "./styles.module.css";
 import secondLogo from "/images/logo/coopera-mogi-logo-2.png";
 import { useEffect } from "react";
-import api from "../../assets/services/api";
+const baseURL = import.meta.env.VITE_HOST
+
 import { useState } from "react";
 
 export function Home() {
@@ -9,19 +10,23 @@ export function Home() {
   const [dataProducts, setDataProducts] = useState([])
 
   useEffect(() => {
-    async function loadData() {
-      await api.get('/vendor-all')
-        .then(response => setDataVendors(response.data))
-        .catch(error => {
-          console.error('Erro na requisição :', error);
-        });
-      await api.get('/product-all')
-        .then(response => setDataProducts(response.data))
-        .catch(error => {
-          console.error('Erro na requisição :', error);
-        });
+    async function fetchData() {
+      try {
+        const resVendors = await fetch(baseURL + '/vendor-all')
+        if (resVendors.ok) {
+          const data = await resVendors.json();
+          setDataVendors(data);
+        }
+        const resProducts = await fetch(baseURL + '/product-all')
+        if (resProducts.ok) {
+          const data = await resProducts.json();
+          setDataProducts(data);
+        }
+      } catch (error) {
+        console.error('Erro na requisição :', error);
+      }
     }
-    loadData();
+    fetchData()
   }, [])
 
   return (

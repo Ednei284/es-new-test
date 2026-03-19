@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import api from "../../assets/services/api";
 import { useState } from "react";
 import { ProductInfoCard } from "../../components/ProductInfoCard";
+const baseURL = import.meta.env.VITE_HOST
 
 export function ProductDetails() {
   const { vendor_name, vendor_id, product_name, product_id } =
@@ -12,26 +13,58 @@ export function ProductDetails() {
   const [dataProducts, setDataProducts] = useState([])
   const [dataVendors, setDataVendors] = useState([])
   useEffect(() => {
-    async function loadData() {
-      await api.post('/vendor-id', { id: parseInt(vendor_id) })
-        .then(response =>
-          setDataVendors(response.data)
-        )
-        .catch(error => {
-          console.error('Erro na requisição /vendor-id:', error);
-        });
-      await api.post('/product-one-id', {
-        id: product_id,
-        vendorId: vendor_id,
-      })
-        .then(response =>
-          setDataProducts(response.data)
-        )
-        .catch(error => {
-          console.error('Erro na requisição:', error);
-        });
+    async function fetchData() {
+      try {
+        const resVendors = await fetch(baseURL + '/vendor-id', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: parseInt(vendor_id) }),
+        })
+        if (resVendors.ok) {
+          const data = await resVendors.json();
+          setDataVendors(data);
+        }
+        const resProducts = await fetch(baseURL + '/product-one-id', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: parseInt(product_id),
+            vendorId: parseInt(vendor_id),
+          }),
+        })
+        if (resProducts.ok) {
+          const data = await resProducts.json();
+          setDataProducts(data);
+        }
+      } catch (error) {
+        console.error('Erro na requisição :', error);
+      }
     }
-    loadData()
+    fetchData()
+    // async function loadData() {
+    //   await api.post('/vendor-id', { id: parseInt(vendor_id) })
+    //     .then(response =>
+    //       setDataVendors(response.data)
+    //     )
+    //     .catch(error => {
+    //       console.error('Erro na requisição /vendor-id:', error);
+    //     });
+    //   await api.post('/product-one-id', {
+    //     id: product_id,
+    //     vendorId: vendor_id,
+    //   })
+    //     .then(response =>
+    //       setDataProducts(response.data)
+    //     )
+    //     .catch(error => {
+    //       console.error('Erro na requisição:', error);
+    //     });
+    // }
+    // loadData()
   }, [vendor_id, product_id])
 
   const whatsAppLink = dataVendors.whatsapp || ""
